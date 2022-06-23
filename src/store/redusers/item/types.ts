@@ -1,10 +1,12 @@
 export interface ItemState {
+    name: string;
     count: number;
 }
 
 export enum ItemActionEnum {
     ADD_COUNT = "ADD_COUNT",
-    DEDUCT_COUNT = "DEDUCT_COUNT"
+    DEDUCT_COUNT = "DEDUCT_COUNT",
+    SET_ERROR = "SET_ERROR"
 }
 
 export interface AddItemAction {
@@ -17,5 +19,12 @@ export interface DeductItemAction {
     payload: number;
 }
 
+export interface SetErrorAction {
+    type: ItemActionEnum.SET_ERROR;
+    payload: string;
+}
+
 export type ItemAction = 
-    AddItemAction | DeductItemAction
+    AddItemAction | 
+    DeductItemAction |
+    SetErrorAction
