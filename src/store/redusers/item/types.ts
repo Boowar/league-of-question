@@ -1,22 +1,29 @@
+import { IItem } from "../../../models/IItem";
+
 export interface ItemState {
-    name: string;
-    count: number;
+    items: IItem[];
 }
 
 export enum ItemActionEnum {
-    ADD_COUNT = "ADD_COUNT",
-    DEDUCT_COUNT = "DEDUCT_COUNT",
+    ADD_ITEM = "ADD_ITEM",
+    DEL_ITEM = "DEL_ITEM",
+    SET_ITEM = "SET_ITEM",
     SET_ERROR = "SET_ERROR"
 }
 
-export interface AddItemAction {
-    type: ItemActionEnum.ADD_COUNT;
-    payload: number;
+export interface SetItemAction {
+    type: ItemActionEnum.SET_ITEM;
+    payload: Array<IItem> | [];
 }
 
-export interface DeductItemAction {
-    type: ItemActionEnum.DEDUCT_COUNT;
-    payload: number;
+export interface AddItemAction {
+    type: ItemActionEnum.ADD_ITEM;
+    payload: Array<IItem> | [];
+}
+
+export interface DelItemAction {
+    type: ItemActionEnum.DEL_ITEM;
+    payload: Array<IItem> | [];
 }
 
 export interface SetErrorAction {
@@ -25,6 +32,7 @@ export interface SetErrorAction {
 }
 
 export type ItemAction = 
+    SetItemAction |
     AddItemAction | 
-    DeductItemAction |
+    DelItemAction |
     SetErrorAction

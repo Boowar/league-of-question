@@ -1,16 +1,17 @@
 import { ItemAction, ItemActionEnum, ItemState } from "./types";
 
 const initialState: ItemState = {
-    name: '',
-    count: 0
+    items:[]
 }
 
 export default function itemReducer(state = initialState, action: ItemAction): ItemState {
     switch (action.type){
-        case ItemActionEnum.ADD_COUNT:
-            return {...state,  count: state.count + action.payload}
-        case ItemActionEnum.DEDUCT_COUNT:
-            return {...state,  count: state.count - action.payload}
+        case ItemActionEnum.ADD_ITEM:
+            return {...state,  }
+        case ItemActionEnum.DEL_ITEM:
+            return {...state,  }
+            case ItemActionEnum.SET_ITEM:
+            return {...state,  items: action.payload}
         default:
             return state;
     }

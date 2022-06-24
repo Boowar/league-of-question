@@ -1,17 +1,17 @@
 import ItemService from "../../../api/ItemService";
+import { IItem } from "../../../models/IItem";
 import {AppDispatch} from "../../index";
-import {AddItemAction, ItemActionEnum, DeductItemAction, SetErrorAction} from './types'
+import {ItemActionEnum, SetErrorAction, SetItemAction} from './types'
 
 export const ItemActionCreators = {
-addCount: (payload: number): AddItemAction => ({type: ItemActionEnum.ADD_COUNT, payload}),
-deductCount: (payload: number): DeductItemAction => ({type: ItemActionEnum.DEDUCT_COUNT, payload}),
+setItem: (payload: Array<IItem>): SetItemAction => ({type: ItemActionEnum.SET_ITEM, payload}),
 setError: (payload: string): SetErrorAction => ({type: ItemActionEnum.SET_ERROR, payload}),
-getItems: (name: string, count: number) => async(dispatch: AppDispatch) => {
+getItems: () => async(dispatch: AppDispatch) => {
     try {
-        console.log("start")
         setTimeout(async () => {
             const response = await ItemService.getItems()
-            console.log(response)
+            console.log(response.data)
+            dispatch(ItemActionCreators.setItem(response.data))
         }, 1000)
     } catch (e) {
         dispatch(ItemActionCreators.setError("Произошла ошибка"))
