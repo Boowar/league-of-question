@@ -1,8 +1,13 @@
 import { FC, useEffect } from 'react'
 import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
+import { IItem } from '../models/IItem'
 
-const Item:FC = () => {
+interface ItemProps {
+  items: IItem[]
+}
+
+const Item:FC<ItemProps> = (props) => {
   const item = useTypedSelector(state => state)
   const {count} = useTypedSelector(state => state.counter)
   const {incCount, decCount, getItems} = useActions()
