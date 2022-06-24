@@ -1,11 +1,12 @@
 import { Layout, Row } from 'antd';
-import {FC, useEffect} from 'react';
+import {FC, useEffect, useState} from 'react';
 import Item from '../components/Item';
 import { useActions } from '../hooks/useActions';
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import { IItem } from '../models/IItem';
 
 const Main: FC = () => {
-    const {name, count} = useTypedSelector(state => state.item)
+    const [items] = useState<IItem>(state => state.items)
     const {getItems} = useActions()
     useEffect(
       () => {
