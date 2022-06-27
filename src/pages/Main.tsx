@@ -6,17 +6,13 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 import { IItem } from '../models/IItem';
 
 const Main: FC = () => {
-    const [items] = useState<IItem>(state => state.items)
-    const {getItems} = useActions()
-    useEffect(
-      () => {
-        const items = getItems()
-      })
+    const {items} = useTypedSelector(state => state.item)
+    console.log('main',items)
     return (
         <Layout>
             <Row justify="center" align="middle" className="h100">
-            items.map()
-            <Item />
+            
+            <Item items={items}/>
             </Row>
         </Layout>
 

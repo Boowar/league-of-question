@@ -8,15 +8,11 @@ interface ItemProps {
 }
 
 const Item:FC<ItemProps> = (props) => {
-  const item = useTypedSelector(state => state)
+  const item = useTypedSelector(state => state.item.items)
   const {count} = useTypedSelector(state => state.counter)
   const {incCount, decCount, getItems} = useActions()
-  useEffect(
-    () => {
-      getItems()
-      console.log(item)
-    }
-  )
+  console.log('item',item)
+  console.log('count',count)
   return (
     <div>
     <button onClick={()=> getItems()}>Получить список</button>
