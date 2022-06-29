@@ -11,7 +11,8 @@ interface ItemProps {
 const Item:FC<ItemProps> = (props) => {
   const item = useTypedSelector(state => state.item.items)
   const count = useTypedSelector(state => state.counter)
-  const {incCount, decCount, fetchItems} = useActions()
+  const {incCount, decCount, fetchItems, setCount} = useActions()
+  useEffect(() => {setCount(props.count)},[])
   console.log('item',item)
   console.log('count',count)
   console.log('props',props)

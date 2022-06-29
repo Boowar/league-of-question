@@ -5,11 +5,17 @@ export interface CountState {
 export enum CountActionEnum {
     INC_COUNT = "INC_COUNT",
     DEC_COUNT = "DEC_COUNT",
+    SET_COUNT = "SET_COUNT",
     SET_ERROR = "SET_ERROR"
 }
 
 export interface IncCountAction {
     type: CountActionEnum.INC_COUNT;
+    payload: number;
+}
+
+export interface SetCountAction {
+    type: CountActionEnum.SET_COUNT;
     payload: number;
 }
 
@@ -24,6 +30,7 @@ export interface SetErrorAction {
 }
 
 export type CountAction = 
-    IncCountAction | 
+    IncCountAction |
+    SetCountAction | 
     DecCountAction |
     SetErrorAction

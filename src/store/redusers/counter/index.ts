@@ -6,6 +6,8 @@ const initialState: CountState = {
 
 export default function itemReducer(state = initialState, action: CountAction): CountState {
     switch (action.type){
+        case CountActionEnum.SET_COUNT:
+            return {...state, count: action.payload}
         case CountActionEnum.INC_COUNT:
             console.log('INC_COUNT state.count', state.count)
             console.log('INC_COUNT action.payload', action.payload)

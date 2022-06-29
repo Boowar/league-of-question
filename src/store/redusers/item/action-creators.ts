@@ -11,7 +11,7 @@ fetchItems: () => async(dispatch: AppDispatch) => {
     try {
         setTimeout(async () => {
             const response = await ItemService.getItems()
-            console.log(response.data)
+            console.log('response.data', response.data)
             dispatch(ItemActionCreators.setItem(response.data))
         }, 1000)
     } catch (e) {
