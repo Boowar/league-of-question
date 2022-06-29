@@ -8,11 +8,16 @@ import { IItem } from '../models/IItem';
 const Main: FC = () => {
     const {items} = useTypedSelector(state => state.item)
     console.log('main',items)
+    const {fetchItems} = useActions()
+    useEffect( () => {
+        fetchItems()
+      }, [])
     return (
         <Layout>
             <Row justify="center" align="middle" className="h100">
-            
-            <Item items={items}/>
+            {items.map( (item, index) => 
+             <Item name={item.name} count={item.count} key={index + item.name}/>
+            )}            
             </Row>
         </Layout>
 

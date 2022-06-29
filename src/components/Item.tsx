@@ -4,20 +4,23 @@ import { useTypedSelector } from '../hooks/useTypedSelector'
 import { IItem } from '../models/IItem'
 
 interface ItemProps {
-  items: IItem[]
+  name: string
+  count: number
 }
 
 const Item:FC<ItemProps> = (props) => {
   const item = useTypedSelector(state => state.item.items)
-  const {count} = useTypedSelector(state => state.counter)
-  const {incCount, decCount, getItems} = useActions()
+  const count = useTypedSelector(state => state.counter)
+  const {incCount, decCount, fetchItems} = useActions()
   console.log('item',item)
   console.log('count',count)
+  console.log('props',props)
+  
   return (
     <div>
-    <button onClick={()=> getItems()}>Получить список</button>
+    <button onClick={()=> fetchItems()}>Получить список</button>
     <button onClick={()=> console.log(item)}>Name</button>
-    Item: {count} <button onClick={()=> incCount(1)}>+1</button>
+    {props.name}: {props.count} <button onClick={()=> incCount(1)}>+1</button>
     <button onClick={()=> decCount(1)}>-1</button>
     </div>
   )
