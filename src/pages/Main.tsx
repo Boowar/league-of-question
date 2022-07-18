@@ -15,8 +15,9 @@ const Main: FC = () => {
     return (
         <Layout>
             <Row justify="center" align="middle" className="h100">
+            <button onClick={()=> fetchItems()}>Получить список</button>
             {items.map( (item, index) => 
-             <Item name={item.name} count={item.count} key={index + item.name}/>
+             <Item id={item.id} name={item.name} count={item.count} key={index + item.name}/>
             )}            
             </Row>
         </Layout>

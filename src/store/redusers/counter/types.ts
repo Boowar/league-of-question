@@ -1,4 +1,5 @@
 export interface CountState {
+    id: number | string;
     count: number;
 }
 
@@ -11,12 +12,18 @@ export enum CountActionEnum {
 
 export interface IncCountAction {
     type: CountActionEnum.INC_COUNT;
-    payload: number;
+    payload:{
+        id: number | string
+        count: number
+    };
 }
 
 export interface SetCountAction {
     type: CountActionEnum.SET_COUNT;
-    payload: number;
+    payload:{
+        id: number | string
+        count: number
+    };
 }
 
 export interface DecCountAction {

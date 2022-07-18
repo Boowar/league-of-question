@@ -1,7 +1,7 @@
 import { ItemAction, ItemActionEnum, ItemState } from "./types";
 
 const initialState: ItemState = {
-    items:[{name: '', count: 0}]
+    items:[{id: '', name: '', count: 0}]
 }
 
 export default function itemReducer(state = initialState, action: ItemAction): ItemState {
