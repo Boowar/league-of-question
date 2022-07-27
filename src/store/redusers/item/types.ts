@@ -20,7 +20,7 @@ export interface SetItemAction {
 
 export interface AddItemAction {
     type: ItemActionEnum.ADD_ITEM;
-    payload: Array<IItem> | [] | string;
+    payload: string;
 }
 
 export interface DelItemAction {

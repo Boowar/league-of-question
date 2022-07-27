@@ -8,7 +8,8 @@ const initialState: ItemState = {
 export default function itemReducer(state = initialState, action: ItemAction): ItemState {
     switch (action.type){
         case ItemActionEnum.ADD_ITEM:
-            const newItem:IItem = {id: state.items.length + 1, name: action.payload, count:0}
+            const newItem = {id: state.items.length + 1, name: action.payload, count:0}
+            console.log('state!@',state)
             return {...state,  items: [...state.items, newItem]}
         case ItemActionEnum.DEL_ITEM:
             return {...state,  }
