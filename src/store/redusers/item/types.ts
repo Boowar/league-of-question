@@ -9,7 +9,8 @@ export enum ItemActionEnum {
     DEL_ITEM = "DEL_ITEM",
     SET_ITEM = "SET_ITEM",
     SET_ERROR = "SET_ERROR",
-    INC_COUNT_ITEM = "INC_COUNT_ITEM"
+    INC_COUNT_ITEM = "INC_COUNT_ITEM",
+    DEC_COUNT_ITEM = "DEC_COUNT_ITEM"
 }
 
 export interface SetItemAction {
@@ -34,7 +35,12 @@ export interface SetErrorAction {
 
 export interface IncCountItemAction {
     type: ItemActionEnum.INC_COUNT_ITEM;
-    payload: Array<IItem> | [];
+    payload: Array<IItem> | [] | number | string;
+}
+
+export interface DecCountItemAction {
+    type: ItemActionEnum.DEC_COUNT_ITEM;
+    payload: Array<IItem> | [] | number | string;
 }
 
 export type ItemAction = 
@@ -42,4 +48,5 @@ export type ItemAction =
     AddItemAction  | 
     DelItemAction  |
     SetErrorAction |
-    IncCountItemAction
+    IncCountItemAction |
+    DecCountItemAction

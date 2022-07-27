@@ -7,7 +7,7 @@ import { IItem } from '../models/IItem';
 
 const Main: FC = () => {
     const {items} = useTypedSelector(state => state.item)
-    console.log('main',items)
+    console.log('main items',items)
     const {fetchItems} = useActions()
     useEffect( () => {
         fetchItems()

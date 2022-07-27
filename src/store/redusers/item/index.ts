@@ -13,7 +13,11 @@ export default function itemReducer(state = initialState, action: ItemAction): I
         case ItemActionEnum.SET_ITEM:
             return {...state,  items: action.payload}
         case ItemActionEnum.INC_COUNT_ITEM:
-            return {...state,  items: action.payload}
+            return {...state, items: state.items.map((item) => item.id === action.payload ? 
+            {...item, count: item.count + 1}: item)}
+        case ItemActionEnum.DEC_COUNT_ITEM:
+            return {...state, items: state.items.map((item) => item.id === action.payload ? 
+            {...item, count: item.count - 1}: item)}
         default:
             return state;
     }

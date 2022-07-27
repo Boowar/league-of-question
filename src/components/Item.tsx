@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import { IItem } from '../models/IItem'
@@ -10,24 +10,20 @@ interface ItemProps {
 }
 
 const Item:FC<ItemProps> = (props) => {
-  //const item = useTypedSelector(state => state.item.items)
-  //const count = useTypedSelector(state => {
-    //console.log('state',state)
-    //console.log('state.counter',state.counter)
-    //return state.counter})
-  const {incCount, decCount, fetchItems, setCount} = useActions()
-  useEffect(() => {setCount(props.count)},[])
-  
- // console.log('item',item)
-  //console.log('count',count)
-  console.log('props',props)
+  const item = useTypedSelector(state => state.item.items)
+  const index = item.findIndex(item =>  item.id === props.id)
+  console.log(item[index].id)
+  const {incCountItem, decCountItem, fetchItems} = useActions()
   
   return (
     <div>
     <button onClick={()=> fetchItems()}>Получить список</button>
     <button onClick={()=> console.log('item')}>Name</button>
-    {props.name}: {props.count} <button onClick={()=> incCount(1)}>+1</button>
-    <button onClick={()=> decCount(1)}>-1</button>
+    {props.name}: {props.count} 
+    <br/>
+    {item[index].name}:{item[index].count}
+    <button onClick={()=> incCountItem(props.id)}>+1</button>
+    <button onClick={()=> decCountItem(props.id)}>-1</button>
     </div>
   )
 }
