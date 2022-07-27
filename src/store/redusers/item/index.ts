@@ -1,3 +1,4 @@
+import { IItem } from "../../../models/IItem";
 import { ItemAction, ItemActionEnum, ItemState } from "./types";
 
 const initialState: ItemState = {
@@ -7,7 +8,8 @@ const initialState: ItemState = {
 export default function itemReducer(state = initialState, action: ItemAction): ItemState {
     switch (action.type){
         case ItemActionEnum.ADD_ITEM:
-            return {...state,  }
+            const newItem:IItem = {id: state.items.length + 1, name: action.payload, count:0}
+            return {...state,  items: [...state.items, newItem]}
         case ItemActionEnum.DEL_ITEM:
             return {...state,  }
         case ItemActionEnum.SET_ITEM:
