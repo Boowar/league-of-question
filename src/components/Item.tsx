@@ -5,15 +5,15 @@ interface ItemProps {
   id: number | string
   name: string
   count: number
+  onClick: any
 }
 
 const Item:FC<ItemProps> = (props) => {
-  const {incCountItem, decCountItem, fetchItems, addItem} = useActions()
-  
+  const {incCountItem, decCountItem, delItem} = useActions()
+  console.log(props)
   return (
     <div>
-    <button onClick={()=> fetchItems()}>Получить список</button>
-    <button onClick={()=> addItem(String(prompt()))}>Добавить</button>
+    <button onClick={()=> delItem(props.id)}>Удалить</button>
     {props.name}: {props.count} 
     <button onClick={()=> incCountItem(props.id)}>+1</button>
     <button onClick={()=> decCountItem(props.id)}>-1</button>

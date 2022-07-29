@@ -25,7 +25,7 @@ export interface AddItemAction {
 
 export interface DelItemAction {
     type: ItemActionEnum.DEL_ITEM;
-    payload: Array<IItem> | [];
+    payload: Array<IItem> | [] | any;
 }
 
 export interface SetErrorAction {

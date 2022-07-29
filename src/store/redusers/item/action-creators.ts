@@ -1,11 +1,12 @@
 import ItemService from "../../../api/ItemService";
 import { IItem } from "../../../models/IItem";
 import {AppDispatch} from "../../index";
-import {IncCountItemAction, DecCountItemAction, ItemActionEnum, SetErrorAction, SetItemAction, AddItemAction} from './types'
+import {IncCountItemAction, DecCountItemAction, ItemActionEnum, SetErrorAction, SetItemAction, AddItemAction, DelItemAction} from './types'
 
 export const ItemActionCreators = {
 setItem: (payload: Array<IItem>): SetItemAction => ({type: ItemActionEnum.SET_ITEM, payload}),
 addItem: (payload: string): AddItemAction => ({type: ItemActionEnum.ADD_ITEM, payload}),
+delItem: (payload: any): DelItemAction => ({type: ItemActionEnum.DEL_ITEM, payload}),
 setError: (payload: string): SetErrorAction => ({type: ItemActionEnum.SET_ERROR, payload}),
 incCountItem: (payload: number | string): IncCountItemAction => ({type: ItemActionEnum.INC_COUNT_ITEM, payload}),
 decCountItem: (payload: number | string): DecCountItemAction => ({type: ItemActionEnum.DEC_COUNT_ITEM, payload}),

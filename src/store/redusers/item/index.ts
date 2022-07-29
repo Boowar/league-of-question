@@ -12,7 +12,8 @@ export default function itemReducer(state = initialState, action: ItemAction): I
             console.log('state!@',state)
             return {...state,  items: [...state.items, newItem]}
         case ItemActionEnum.DEL_ITEM:
-            return {...state,  }
+            console.log('delItem', action.payload)
+            return {...state,  items: state.items.filter(item => item.id !== action.payload.id)}
         case ItemActionEnum.SET_ITEM:
             return {...state,  items: action.payload}
         case ItemActionEnum.INC_COUNT_ITEM:
